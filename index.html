@@ -1,97 +1,78 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl-PL">
 <head>
-<meta charset="utf-8">
-<meta name="author" content="Jakub Zając & Paweł Pierzchałka">
-<meta name="description" content="Projekt KAC PER %%%">
-<meta name="keywords" content="Projekt KAC PER %%%">
-<title>KAC PER %%%</title>
+<meta charset="UTF-8">
+<meta name="author" content="Jakub Zając & Paweł Pierzchałka & Kacper Strzelecki">
+<meta name="description" content="Kac Per The Game">
+<meta name="keywords" content="Kac, Per, The, Game">
+<title></title>
+<style>
+    #Top
+{
+    background-color: #FFFF00;
+    width:100%;
+    height: 10%;
+    margin-left:-8px;
+    margin-top:-8px;
+    position:absolute;
+}
+#Banner_left
+{
+    background-color: rgb(68, 0, 255);
+    width:10%;
+    height: 80%;
+    top:10%;
+    margin-left:-8px;
+    position:absolute;
+}
+#Menu
+{
+    background-color: #FF00FF;
+    width:80%;
+    height: 15%;
+    top:10%;
+    left: 10%;
+    position:absolute;
+    
+}
+#Central
+{
+    background-color: #00FFFF;
+    width:80%;
+    height: 65%;
+    top:25%;
+    left: 10%;
+    position:absolute;
+}
+#Banner_rightŹ
+{
+    background-color: #00FF00;
+    width:10%;
+    height: 80%;
+    top:10%;
+    left:90%;
+    position:absolute;
+}
+#Bottom
+{
+    background-color: #FF0000;
+    width:100%;
+    height: 10%;
+    position:absolute;
+    top:90%;
+    margin-left:-8px;
+}</style>
 </head>
 <body>
+        <body bgcolor="#855800">
+                <div id="Top"><h1><center>Jakiś napis Kac_Per the game czy coś</center></h1></div>
+                <div id="Banner_left"><h1>Idk do końca</h1></div>
+                <div id="Menu"><h1>Opcja 1, Opcja 2...</h1></div>
+                <div id="Central"><h1>Główna część strony</h1></div>
+                <div id="Banner_right"><h1>Idk też</h1></div>
+                <div id="Bottom"><h1>Gra stworzona przez...</h1></div>    
 <script>
-p1_NICK='Paweł';
-p1_HP=1000;
-p1_ATK=150;
-p1_ARMOR=100;
-p1_LUCK=100;
-p1_lvl=4; //staty p1
-
-p2_NICK='Kuba';
-p2_HP=1000; 
-p2_ATK=150;
-p2_ARMOR=200;
-p2_LUCK=50;
-p2_lvl=5; //staty p2
-
-i=0; //do usunięcia później
-
-
-moneta=Math.round(Math.random());// losowanie kto zaczyna 
-
-while(p2_HP>0 && p1_HP>0 && i<300) // "i<300" do usunięcia później
-{
-LUCK_p1=p1_LUCK/p2_LUCK*10;
-if(LUCK_p1>99)
-LUCK_p1=99; 
-
-LUCK_p2=p2_LUCK/p1_LUCK*10; // szczęście w walce liczone ze wzoru szczęście p1/szczęście p2*10 (dla 60:10 wyniesie 60 dla jednego i 1,67 dla drugiego)
-if(LUCK_p2>99)
-LUCK_p2=99; // żeby była zawsze jakaś szansa
-
-//DODGE_p1=p1_DODGE/p2_DODGE*10
-// if(DODGE_p1>99)
-//DODGE_p1=99;
-//DODGE_p2=p2_DODGE/p1_DODGE*10
-// if(DODGE_p2>99)
-//DODGE_p2=99;
-
-CRITICAL_p1=Math.floor(Math.random() * (100-0+1)); // randomowa liczba 0-100
-if(moneta==1) //rzut moentą wygrał gracz pierwszy
-{
-    moneta-=1; //zmiana atakującego
-    if(LUCK_p1>CRITICAL_p1) // szansa na uderzenie krytyczne
-{
-        // UNIK_p1=Math.floor(Math.random() * (100-0+1));
-        // if(DODGE_p1<=UNIK_p1)
-        //{
-        p1_SHOT=p1_ATK+LUCK_p1*p1_ATK/100;
-        p2_HP=p2_HP-(p1_SHOT-Math.round(p1_SHOT*(p2_ARMOR/(p1_lvl*2)/100))); // z krytykiem p1
-        // }
-}
-    else
-{
-        // UNIK_p1=Math.floor(Math.random() * (100-0+1));
-        // if(DODGE_p1<=UNIK_p1)
-        //{
-        p1_SHOT=Math.round(p1_ATK-p1_ATK*(p2_ARMOR/(p1_lvl*2)/100));
-        p2_HP=p2_HP-p1_SHOT; // bez krytyka p1
-        // }
-}
-        document.write(p1_NICK+' Zadał '+p1_SHOT+'<font color="#FF0000"> DMG </font><br>'+p2_NICK+' ma '+p2_HP+' <font color="#00FF00">HP</font><br>'); // info o DMG i HP 
-        if(p2_HP<=0)
-            document.write(p1_NICK+' wygrał!'); // koniec walki, p1 win
-}
-else //rzut moentą wygrał gracz drugi
-{
-    moneta+=1 //zmiana atakującego
-    CRITICAL_p2=Math.floor(Math.random() * (100-0+1)); // randomowa 0-100
-    if(LUCK_p2>CRITICAL_p2)
-{
-        p2_SHOT=p2_ATK+LUCK_p2*p2_ATK/100;
-        p1_HP=p1_HP-(p2_SHOT-Math.round(p2_SHOT*(p1_ARMOR/(p2_lvl*2)/100))); // jeśli kryt p2
-}
-    else
-{
-        p2_SHOT=Math.round(p2_ATK-p2_ATK*(p1_ARMOR/(p2_lvl*2)/100)); 
-        p1_HP=p1_HP-p2_SHOT; //bez kryta p2
-}
-    document.write(p2_NICK+' Zadał '+p2_SHOT+'<font color="#FF0000"> DMG </font><br>'+p1_NICK+' ma '+p1_HP+' <font color="#00FF00">HP</font><br>'); // info o DMG i HP   
-    if(p1_HP<=0)
-        document.write(p2_NICK+' wygrał!'); // koniec walki, p2 win
-}
-i++; //do usunięcia później
-}
-
+    document.write('Elo 3 2 0');
 </script>
 </body>
 </html>
